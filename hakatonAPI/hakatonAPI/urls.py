@@ -21,11 +21,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^api/create/$', views.todo_list),
-    re_path(r'^api/delete/(\d+)$', views.todo_detail),
-    path('api/register', views.UserRegister.as_view(), name='register'),
-	path('api/login', views.UserLogin.as_view(), name='login'),
-	path('api/logout', views.UserLogout.as_view(), name='logout'),
-	path('api/user', views.UserView.as_view(), name='user'),
+    re_path(r'^api/create/$', views.TodoAPIViewCreate.as_view()),
+    re_path(r'^api/delete/(\d+)$', views.TodoAPIDelete.as_view()),
+    path('api/register/', views.UserRegister.as_view(), name='register'),
+	path('api/login/', views.UserLogin.as_view(), name='login'),
+	path('api/logout/', views.UserLogout.as_view(), name='logout'),
+	path('api/user/', views.UserView.as_view(), name='user'),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

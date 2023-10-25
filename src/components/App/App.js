@@ -1,5 +1,10 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import "./App.css";
+import axios from "axios";
+
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+
 
 class App extends Component {
   constructor(props) {

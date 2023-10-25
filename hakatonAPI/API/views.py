@@ -5,13 +5,13 @@ from rest_framework.response import Response
 from .serializers import UserRegisterSerializer, UserLoginSerializer, UserSerializer
 from rest_framework import permissions, status
 from .validations import custom_validation, validate_email, validate_password
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .serializers import *
 
 class TodoAPIViewCreate(generics.ListCreateAPIView):
-	authentication_classes = [TokenAuthentication]
+	authentication_classes = [SessionAuthentication]
 	permission_classes = [IsAuthenticated]
 
 	queryset = TodoModel.objects.all()
@@ -19,7 +19,7 @@ class TodoAPIViewCreate(generics.ListCreateAPIView):
 
 
 class TodoAPIDelete(generics.DestroyAPIView):
-	authentication_classes = [TokenAuthentication]
+	authentication_classes = [SessionAuthentication]
 	permission_classes = [IsAuthenticated]
 
 	queryset = TodoModel.objects.all()
@@ -27,7 +27,7 @@ class TodoAPIDelete(generics.DestroyAPIView):
 
 
 class TodoAPIUpdate(generics.UpdateAPIView):
-	authentication_classes = [TokenAuthentication]
+	authentication_classes = [SessionAuthentication]
 	permission_classes = [IsAuthenticated]
 
 	queryset = TodoModel.objects.all()
@@ -68,7 +68,7 @@ class UserRegister(APIView):
 
 class UserLogin(APIView):
 	permission_classes = (permissions.AllowAny,)
-	authentication_classes = (TokenAuthentication,)
+	authentication_classes = (SessionAuthentication,)
 	
 	def post(self, request):
 		data = request.data
@@ -82,8 +82,6 @@ class UserLogin(APIView):
 
 
 class UserLogout(APIView):
-	permission_classes = (permissions.AllowAny,)
-	authentication_classes = ()
 	def post(self, request):
 		logout(request)
 		return Response(status=status.HTTP_200_OK)
@@ -91,7 +89,7 @@ class UserLogout(APIView):
 
 class UserView(APIView):
 	permission_classes = (permissions.IsAuthenticated,)
-	authentication_classes = (TokenAuthentication,)
+	authentication_classes = (SessionAuthentication,)
 	
 	def get(self, request):
 		serializer = UserSerializer(request.user)
