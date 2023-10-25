@@ -15,17 +15,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from API import views
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.schemas import get_schema_view
+from django.views.generic import TemplateView
+
+from API.views import * 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^api/create/$', views.TodoAPIViewCreate.as_view()),
-    re_path(r'^api/delete/(\d+)$', views.TodoAPIDelete.as_view()),
-    path('api/register/', views.UserRegister.as_view(), name='register'),
-	path('api/login/', views.UserLogin.as_view(), name='login'),
-	path('api/logout/', views.UserLogout.as_view(), name='logout'),
-	path('api/user/', views.UserView.as_view(), name='user'),
+    path('api_schema', get_schema_view(title='API Schema', description='api documentation'), name='api_schema'),
+    path('api/docs/', TemplateView.as_view(
+        template_name='docs.html',
+        extra_context={'schema_url':'api_schema'}
+        ), name='swagger-ui'),
+
+    re_path(r'^api/create/$', TodoAPIViewCreate.as_view()),
+    re_path(r'^api/delete/(\d+)$', TodoAPIDelete.as_view()),
+
+    path('api/register/', UserRegister.as_view(), name='register'),
+	path('api/login/', UserLogin.as_view(), name='login'),
+	path('api/logout/', UserLogout.as_view(), name='logout'),
+	path('api/user/', UserView.as_view(), name='user'),
+
+    path('api/upload/', FileUploadView.as_view(), name='file-upload'),
+    path('api/download/<str:file_id>/', FileDownloadView.as_view(), name='file-download'),
 
 ]

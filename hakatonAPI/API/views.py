@@ -1,5 +1,8 @@
+import os
+
 from django.contrib.auth import login, logout
 from rest_framework import generics
+from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import UserRegisterSerializer, UserLoginSerializer, UserSerializer
@@ -35,22 +38,26 @@ class TodoAPIUpdate(generics.UpdateAPIView):
 
 
 
+class FileUploadView(APIView):
+    def post(self, request):
+        file_serializer = FileSerializer(data=request.data)
+        if file_serializer.is_valid():
+            file_serializer.save()
+            return Response(file_serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# @api_view(['PUT', 'DELETE'])
-# def todo_detail(request, pk):
-#     try:
-#         table = TodoModel.objects.get(pk=pk)
-#     except TodoModel.DoesNotExist:
-#         return Response(status=status.HTTP_404_NOT_FOUND)
-#     if request.method == 'PUT':
-#         serializer = TodoModelSerializer(table, data=request.data, context={'request': request})
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(status=status.HTTP_204_NO_CONTENT)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-#     elif request.method == 'DELETE':
-#         table.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
+class FileDownloadView(APIView):
+    def get(self, request, file_id):
+        try:
+            file_obj = TodoModel.objects.get(fileStrId=file_id)
+            file_path = file_obj.file.path
+            with open(file_path, 'rb') as f:
+                response = HttpResponse(f.read(), content_type="application/octet-stream")
+                response['Content-Disposition'] = 'attachment; filename="' + os.path.basename(file_path) + '"'
+                return response
+        except TodoModel.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 

@@ -6,10 +6,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: [],
       user: 'Test',
 
     };
   }
+
+  componentDidMount() {
+    fetch("http://localhost:8000/api/create/")
+      .then((response) => response.json())
+      .then((data) => this.setState({ data }));
+  }
+
+
+
 
   
   render() {

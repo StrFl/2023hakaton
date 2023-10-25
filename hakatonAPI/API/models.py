@@ -32,8 +32,10 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 	USERNAME_FIELD = 'email'
 	REQUIRED_FIELDS = ['username']
 	objects = AppUserManager()
+
 	def __str__(self):
 		return self.username
+
 
 class TodoModel(models.Model):
     projName = models.CharField(max_length=240, blank=True, default="Новый проект")
@@ -47,10 +49,7 @@ class TodoModel(models.Model):
     worker = models.CharField(max_length=20, blank=True)
     done = models.BooleanField(default=False)
     status = models.CharField(max_length=20, blank=True, default="Ожидание начала")
-    fileStrId = models.CharField(
-        unique=True,
-        primary_key=True,
-        max_length=255,
-        blank=True
-    )
+    fileStrId = models.CharField(unique=True,max_length=255,blank=True)
     file = models.FileField(upload_to='uploads/', blank=True)
+
+

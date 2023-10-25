@@ -12,6 +12,15 @@ class TodoModelSerializer(serializers.ModelSerializer):
         fields = ("__all__")
 
 
+class FileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TodoModel
+        fields = ("fileStrId", "file")
+
+
+
+
+
 class UserRegisterSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserModel
