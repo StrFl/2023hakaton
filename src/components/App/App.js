@@ -15,7 +15,7 @@ class App extends Component {
     return (
     <div className="head">
       <p className="h-title">Проект пользователя { this.state.user }</p>
-      </div>
+    </div>
       
 
 

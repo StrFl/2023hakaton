@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+@font-face {
+  font-family: "RubikMedium";  
+  src: url("./Rubik-Medium.ttf") format("truetype"); 
+  font-style: normal; 
+  font-weight: normal;
+   }
+   
+   @font-face {
+    font-family: "CoreSansC45";  
+    src: url("./CoreSansC45Regular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal;
+     }
+
+     @font-face {
+      font-family: "CoreSansC65";  
+      src: url("./CoreSansC65Bold.ttf") format("truetype"); 
+      font-style: normal; 
+      font-weight: normal;
+       }
+
+
+
+     @font-face {
+      font-family: "Rubik";  
+      src: url("./Rubik-Light.ttf") format("truetype"); 
+      font-style: normal; 
+      font-weight: normal;
+                   }
