@@ -6,8 +6,26 @@ import App from './components/App/App';
 import Auth from './components/auth/Auth';
 import reportWebVitals from './reportWebVitals';
 import Main from './components/Main/Main';
+import { useNavigate } from "react-router-dom";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const navigate = useNavigate();
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  
+  <Route {...rest} render={props => (
+    isAuthenticated() ? (
+      <Component {...props} />
+    ) : (
+      navigate("/auth")
+    )
+  )} />
+);
+
+
+
 
 root.render(
   <React.StrictMode>
@@ -16,9 +34,9 @@ root.render(
 
             <Routes>
                 <Route path="/" element={<Main />} />
-                <Route path="/app" element={<App />} />
+                <PrivateRoute path="/app" element={<App />} />
                 <Route path="/auth" element={<Auth />} />
-               </Routes>
+            </Routes>
          
         </BrowserRouter>
   </React.StrictMode>

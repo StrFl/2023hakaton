@@ -92,6 +92,21 @@ function App() {
     });
   }
 
+
+
+
+  function isAuthenticated() {
+    if (currentUser) {
+      return true;
+    }
+      
+    return false;
+      
+ }
+    
+
+
+
   if (currentUser) {
     return (
       <div>

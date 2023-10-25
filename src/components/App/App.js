@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 
 class App extends Component {
@@ -12,12 +13,12 @@ class App extends Component {
     };
   }
 
+
   componentDidMount() {
     fetch("http://localhost:8000/api/create/")
       .then((response) => response.json())
       .then((data) => this.setState({ data }));
   }
-
 
 
 

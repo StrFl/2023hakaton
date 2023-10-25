@@ -51,5 +51,6 @@ class TodoModel(models.Model):
     status = models.CharField(max_length=20, blank=True, default="Ожидание начала")
     fileStrId = models.CharField(unique=True,max_length=255,blank=True)
     file = models.FileField(upload_to='uploads/', blank=True)
-
+    def __str__(self):
+	    return self.user.username
 
