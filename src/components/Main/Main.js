@@ -1,5 +1,6 @@
 import "./Main.css";
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Main = () => {
     useEffect(() => {
@@ -32,7 +33,7 @@ const Main = () => {
             <div class="hero-content">
                 <h1>ПЛАНИРОВЩИК <span>ЗАДАЧ</span></h1>
                 <div class="hero-content__p">Начните планировать свои задачи уже сегодня, зарегистрируйтесь</div>
-                <button class="button-start">СОЗДАТЬ ПРОЕКТ</button>
+                <Link to='/auth' class="button-start">СОЗДАТЬ ПРОЕКТ</Link>
             </div>
         </div>
         

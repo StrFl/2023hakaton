@@ -89,6 +89,7 @@ body {
 	outline: none;
 	cursor: pointer;
 	margin-top: calc(var(--index) * 2.5);
+    text-decoration: none;
 }
 .layer-4, .layer-5, .layer-6 {
 	pointer-events: none;
