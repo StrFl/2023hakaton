@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-import App from './components//App/App';
+import { BrowserRouter, Route, Routes} from "react-router-dom";
+import App from './components/App/App';
+import Auth from './components/auth/Auth';
 import reportWebVitals from './reportWebVitals';
 import Main from './components/Main/Main';
 
@@ -16,6 +17,7 @@ root.render(
             <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/app" element={<App />} />
+                <Route path="/auth" element={<Auth />} />
                </Routes>
          
         </BrowserRouter>
