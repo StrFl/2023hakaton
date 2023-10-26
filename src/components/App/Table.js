@@ -67,16 +67,7 @@ const Table = ({ todos, isLoading, setTodos }) => {
 
   return (
     <div>
-      {isLoading ? (
-        <div>Is Loading </div>
-      ) : (
-        <div>
-          
-          {todos.map((item, index) => (
-              <p>Проект пользователя {item.user }</p>
-          ))}
-        </div>
-      )}
+      
       <table className="w-11/12 max-w-4xl">
         <thead className="border-b-2 border-black">
           <tr>

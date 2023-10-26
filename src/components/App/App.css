@@ -52,7 +52,7 @@ body {
   border-radius: 5vw;
   border: none;
   width: 40vw;
-  margin: auto;
+  margin-left: 30vw;
   margin-top: 3vw;
   padding: 0.5vw;
   padding-left: 0.7vw;
@@ -66,133 +66,205 @@ body {
 
 
 
-#side-checkbox {
-  display: none;
+.desc {
+ background-color: #222326;
+  padding: 0.7vw;
+  border: none;
+  margin-left: 2vw;
+  width: 21vw;
+  color: white;
+  border-radius: 0.4vw;
+  font-family: CoreSansC45;
+  margin-bottom: 1vw;
 }
-.side-panel {
+
+.btn {
+  border-radius: 2vw;
+  border: none;
+  width: 10vw;
+  margin-left: 8vw;
+  padding: 0.7vw;
+  box-shadow: 5px 5px 5px 0 #222326;
+}
+
+
+
+
+
+
+
+
+
+
+
+.navbar-default {
+  background-color: #FFF;
+  margin-left: 300px;
+}
+
+/*main side bar*/
+.msb {
+  width: 500px;
+  background-color: #161515;
   position: fixed;
-  z-index: 999999;
-  top: 0;
-  left: 100vw;
-  background: #a75050;
-  transition: all 0.5s;   
-  width: 320px;
-  height: 100vh;
-  box-shadow: 10px 0 20px rgba(0,0,0,0.4);
-  color: #FFF;
-  padding: 40px 20px;
-}
-.side-title {
-  font-size: 20px;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #000000;
-}
-/* Оформление кнопки на странице */
-.side-button-1-wr {
-  text-align: center; /* Контейнер для кнопки, чтобы было удобнее ее разместить */
-}
-.side-button-1 {
-  display: inline-block;
-}
-.side-button-1 .side-b {
-  margin: 10px;
-  text-decoration: none;
-  position: relative;
-  font-size: 20px;
-  line-height: 20px;
-  padding: 12px 30px;
-  color: #FFF;
-  font-weight: bold;
-  text-transform: uppercase; 
-  font-family: 'Roboto', Тahoma, sans-serif;
-  background: #010e1a;
-  cursor: pointer; 
-  border: 2px solid #005da9;
-}
-.side-button-1 .side-b:hover,
-.side-button-1 .side-b:active,
-.side-button-1 .side-b:focus {
-  color: #FFF;
-}
-.side-button-1 .side-b:after,
-.side-button-1 .side-b:before {
-  position: absolute;
-  height: 4px;
-  left: 10%;
-  bottom: -6px;
-  content: "";
-  transition: all 280ms ease-in;
-  width: 10;
-}
-.side-button-1 .side-open:after,
-.side-button-1 .side-open:before {
-  background: green;
-}
-.side-button-1 .side-close:after,
-.side-button-1 .side-close:before {
-  background: red;
-}
-.side-button-1 .side-b:before {
-  top: -6px;
-}
-.side-button-1 .side-b:hover:after,
-.side-button-1 .side-b:hover:before {
-  width: 70%;
-  left: 0;
-}
-/* Переключатели кнопки 1 */
-.side-button-1 .side-close {
-  display: none;
-}
-#side-checkbox:checked + .side-panel + .side-button-1-wr .side-button-1 .side-open {
-  display: none;
-}
-#side-checkbox:checked + .side-panel + .side-button-1-wr .side-button-1 .side-close {
-  display: block;
-}
-#side-checkbox:checked + .side-panel {
-  left: 0;
-}
-/* Оформление кнопки на панеле */
-.side-button-2 {
-  font-size: 30px;
-  border-radius: 20px;
-  position: absolute;
+  left: 100px;
+  top: 4.1vw;
+  right: auto;
+  min-height: 100%;
+  
+  white-space: nowrap;
+  height: 80%;
   z-index: 1;
-  top: 8px;
-  right: 8px;
-  cursor: pointer;
-  transform: rotate(45deg);
-  color: #BFE2FF;    
-  transition: all 280ms ease-in-out;    
+  border-right: 1px solid #161616;
+
+  .navbar-nav {
+    .panel {
+      border: 0 none;
+      box-shadow: none;
+      margin: 0;
+      background: inherit;
+    }
+    li {
+      display: block;
+      width: 100%;
+      a {
+        padding: 15px;
+        color: #5f5f5f;
+        .glyphicon, .fa {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+  .nb {
+    padding-top: 5px;
+    padding-left: 10px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    
+  }
 }
-.side-button-2:hover {
-  transform: rotate(45deg) scale(1.1);    
-  color: #FFF;
+ul.nv,
+ul.ns {
+  position: relative;
+  padding: 0;
+  list-style: none;  
+}
+.nv {  
+  li {
+    display: block;
+    position: relative;
+    
+    &::before {
+      clear: both;
+      content: "";      
+      display: table;
+    }
+    a {
+      color: #444;
+      padding: 10px 25px;
+      display: block;
+  
+      
+      .ic {
+        font-size: 16px;
+        margin-right: 5px;
+        font-weight: 300;
+        display: inline-block;
+      }
+    }
+  }
+  /*ns: nav-sub*/
+  .ns {
+    li {
+      a {
+        padding: 10px 50px;
+      }
+    }
+    
+  }
+  
 }
 
 
+/*main content wrapper*/
+.mcw {
+  margin-left: 300px;
+  position: relative;
+  min-height: 100%;
+  
 
-
-
-
-.button_nav:hover{
-  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3;
-  background-color: #2196f3;
-  color: #000;
-}
-.dropbtn:hover{
-  box-shadow: 0 0 1px #2196f3, 0 0 40px #2196f3;
-  background-color: #2196f3;
-  color: #000;
-  transition: 1s;
-  transition-delay: 1s ;
 }
 
 
+/*globals*/
+a,
+a:focus,
+a:hover {
+ text-decoration: none;
+}
 
+.inbox {
+  
+  
+  ul, li {
+    margin: 0;
+    padding: 0;
+  }
+  ul {    
+    li {
+      list-style: none;
+      a {
+        display: block;
+        padding: 10px 20px;
+      }
+    }
+  }
+}
+.msb, .mnb {
+    -moz-animation: slidein 300ms forwards;
+    -o-animation: slidein 300ms forwards;
+    -webkit-animation: slidein 300ms forwards;
+    animation: slidein 300ms forwards;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;  
+}
+.mcw {
+    -moz-animation: bodyslidein 300ms forwards;
+    -o-animation: bodyslidein 300ms forwards;
+    -webkit-animation: bodyslidein 300ms forwards;
+    animation: bodyslidein 300ms forwards;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;  
+}
+body.msb-x {
 
+  .msb {
+    -moz-animation: slideout 300ms forwards;
+    -o-animation: slideout 300ms forwards;
+    -webkit-animation: slideout 300ms forwards;
+    animation: slideout 300ms forwards;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+}
 
+  /* Slide in animation */
 
+  @keyframes slidein {
+    0% {
+      left: -500px;
+    }
+    100% {
+      left: 75vw;
+    }
+  }
 
+  @keyframes slideout {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -500px;
+    }
+  }

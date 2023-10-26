@@ -6,10 +6,14 @@ axios.defaults.xsrfHeaderName = "X-CSRFToken";
 axios.defaults.withCredentials = true;
 
 const TodoForm = ({ setTodos, fetchData }) => {
+    const [isMsbVisible, setMsbVisible] = useState(false);
+
+    const handleMsbClick = () => { setMsbVisible(!isMsbVisible); };
 
     const [newTodo, setNewTodo] = useState({
         'body': '',
-        'goals': ''
+        'goals': '',
+        'prioritet': ''
     })
 
     const handleChange = (e) => {
@@ -26,12 +30,18 @@ const TodoForm = ({ setTodos, fetchData }) => {
             'goals': e.target.value
         }))
     }
+    const handleChangePrior = (e) => {
+        setNewTodo(prev => ({
+            ...prev,
+            'prioritet': e.target.value
+        }))
+    }
 
 
     const postTodo = async () => {
         try {
             await axios.post(`http://127.0.0.1:8000/api/view/`, newTodo)
-            setNewTodo({ 'body': '', 'goals': '' })
+            setNewTodo({ 'body': '', 'goals': '' , 'prioritet': ''})
             setTodos(prevTodos => [...prevTodos, newTodo])
             fetchData()
         } catch (error) {
@@ -44,7 +54,7 @@ const TodoForm = ({ setTodos, fetchData }) => {
     //         postTodo();
     //     }
     // }
-
+ 
 
 
     return (
@@ -52,33 +62,45 @@ const TodoForm = ({ setTodos, fetchData }) => {
             <input type="text" placeholder="Добавить задачу" value={newTodo.body}
                 className="inp"
                 onChange={handleChange}
+                id="msbo" onClick={() => {
+                    document.body.classList.toggle('msb-x');
+                  }}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                         postTodo();
                     }
                 }} />
-            <input type="checkbox" id="side-checkbox" />
-                <div class="side-panel">
-                    <label class="side-button-2" for="side-checkbox">+</label>    
-                    <div class="side-title">Выдвижная панель:</div>
-                    <p>Информация в панеле</p>
-                            </div>
-                            <div class="side-button-1-wr">
-                    <label class="side-button-1" for="side-checkbox">
-                        <div class="side-b side-open">Открыть</div>
-                        <div class="side-b side-close">Закрыть</div>
-                    </label>
-</div>
 
-            <input type="text" placeholder="Описание" value={newTodo.goals}
-                className=""
-                onChange={handleChangeGoal}
-                onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                        postTodo();
-                    }
-                }} />
-            <button onClick={postTodo} className="btn btn-primary ml-2">Добавить</button>
+
+            <div class="msb" id="msb">
+                <div className="col">
+                    <input type="text" placeholder="Описание" value={newTodo.goals}
+                    className="desc"
+                    onChange={handleChangeGoal}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            postTodo();
+                        }
+                        }} />
+                  
+                    <input type="text" placeholder="Приоритет" value={newTodo.prioritet}
+                    className="desc"
+                    onChange={handleChangePrior}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            postTodo();
+                        }
+                    }} />
+
+
+
+                    <button onClick={postTodo} className="btn">Добавить</button>
+                </div>
+                    
+                </div>
+
+
+            
         </div>
     )
 }
