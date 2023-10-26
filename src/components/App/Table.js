@@ -7,9 +7,7 @@ import {
   MdOutlineCheckBoxOutlineBlank,
 } from "react-icons/md";
 
-axios.defaults.xsrfCookieName = "csrftoken";
-axios.defaults.xsrfHeaderName = "X-CSRFToken";
-axios.defaults.withCredentials = true;
+
 
 const Table = ({ todos, isLoading, setTodos }) => {
   const [editText, setEditText] = useState({
@@ -71,7 +69,7 @@ const Table = ({ todos, isLoading, setTodos }) => {
    
     
           {isLoading ? (
-            <div>Загрузка </div>
+            <div> Загрузка </div>
           ) : (
             <>
               {" "}
@@ -93,14 +91,21 @@ const Table = ({ todos, isLoading, setTodos }) => {
                       )}
                     </td>
                
-                  <td className="p-3 text-sm " title={todoItem.id}>
+                   <td className="p-3 text-sm " title={todoItem.id}>
                     {todoItem.prioritet}
-                  </td>
-                  <td className="p-3 text-sm " title={todoItem.id}>
+                      </td>
+                    <td className="p-3 text-sm " title={todoItem.id}
+                    id="msbo">
                     {todoItem.body}
-                  </td>
+                    </td>
+                    
+                   
+                    
                   <td className="p-3 text-sm " title={todoItem.id}>
                     {todoItem.goals}
+                    </td>
+                    <td className="p-3 text-sm font-medium">
+                    {new Date(todoItem.created).toLocaleString()}
                   </td>
                   <td className="p-3 text-sm text-center">
                     <span
@@ -111,9 +116,7 @@ const Table = ({ todos, isLoading, setTodos }) => {
                       {todoItem.completed ? "Выполнено" : "В процессе"}
                     </span>
                   </td>
-                  <td className="p-3 text-sm font-medium">
-                    {new Date(todoItem.created).toLocaleString()}
-                  </td>
+                 
                   <td className="p-3 text-sm font-medium grid grid-flow-col items-center mt-5 ">
                     <span>
                       <label htmlFor="my-modal">

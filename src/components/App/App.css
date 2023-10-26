@@ -51,8 +51,8 @@ body {
 .inp {
   border-radius: 5vw;
   border: none;
-  width: 40vw;
-  margin-left: 30vw;
+  width: 50vw;
+  margin-left: 27vw;
   margin-top: 3vw;
   padding: 0.5vw;
   padding-left: 0.7vw;
@@ -61,7 +61,7 @@ body {
 .inp::placeholder {
   font-size: 1vw;
   font-family: CoreSansC45;
-  padding-left: 15vw;
+  padding-left: 21vw;
 }
 
 
@@ -89,7 +89,7 @@ body {
 }
 
 .line {
-  margin-left: 10vw;
+  margin-left: 14vw;
   margin-top: 1vw;
 }
 

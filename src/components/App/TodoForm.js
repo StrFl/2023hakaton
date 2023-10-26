@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import {
+    MdOutlineDeleteOutline,
+    MdEditNote,
+    MdOutlineCheckBox,
+    MdOutlineCheckBoxOutlineBlank,
+  } from "react-icons/md";
+  
+
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 axios.defaults.withCredentials = true;
@@ -57,6 +65,11 @@ const TodoForm = ({ setTodos, fetchData }) => {
  
 
 
+    
+
+
+
+
     return (
         <div className="col">
             <input type="text" placeholder="Добавить задачу" value={newTodo.body}
@@ -95,9 +108,25 @@ const TodoForm = ({ setTodos, fetchData }) => {
 
 
                     <button onClick={postTodo} className="btn">Добавить</button>
+
+
+
+
+
+
+
                 </div>
                     
                 </div>
+
+
+            
+
+
+
+
+
+
 
 
             
