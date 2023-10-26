@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import TodoForm from "../App/TodoForm";
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
@@ -59,6 +60,7 @@ function App() {
           .then(function (res) {
             setCurrentUser(true);
             navigate("/app");
+            return(<App email={email} password={password} />)
           })
           .catch(function (error) {
             setCurrentUser(false);
@@ -78,7 +80,9 @@ function App() {
       })
       .then(function (res) {
         setCurrentUser(true);
+
         navigate("/app");
+        return(<App email={email} password={password} />)
       })
       .catch(function (error) {
         setCurrentUser(false);
@@ -92,20 +96,13 @@ function App() {
     });
   }
 
-
-
-
   function isAuthenticated() {
     if (currentUser) {
       return true;
     }
-      
+
     return false;
-      
- }
-    
-
-
+  }
 
   if (currentUser) {
     return (
@@ -118,6 +115,7 @@ function App() {
 
         <div className="center">
           <h2>Вы авторизованы</h2>
+        
         </div>
       </div>
     );
@@ -155,6 +153,7 @@ function App() {
             <button variant="primary" type="submit">
               Submit
             </button>
+
           </form>
         </div>
       ) : (

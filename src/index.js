@@ -11,30 +11,30 @@ import { useNavigate } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const navigate = useNavigate();
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+// const PrivateRoute = ({ component: Component, ...rest }) => (
   
-  <Route {...rest} render={props => (
-    isAuthenticated() ? (
-      <Component {...props} />
-    ) : (
-      navigate("/auth")
-    )
-  )} />
-);
+//   <Route {...rest} render={props => (
+//     true ? (
+//       <Component {...props} />
+//     ) : (
+//       false
+//     )
+//   )} />
+// );
 
 
 
 
 root.render(
+  
   <React.StrictMode>
      <BrowserRouter>
             
 
             <Routes>
                 <Route path="/" element={<Main />} />
-                <PrivateRoute path="/app" element={<App />} />
+                <Route path="/app" element={<App />} />
                 <Route path="/auth" element={<Auth />} />
             </Routes>
          

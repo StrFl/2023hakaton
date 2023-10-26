@@ -38,19 +38,23 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 
 
 class TodoModel(models.Model):
-    projName = models.CharField(max_length=240, blank=True, default="Новый проект")
-    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
-    taskPackage = models.CharField(max_length=240, blank=True, default="Новая задача")
-    taskName = models.CharField(max_length=240, blank=True)
-    goals = models.CharField(max_length=240,  blank=True)
-    srok_start = models.DateField(auto_now=True)
-    srok_end = models.DateField(blank=True)
-    prioritet = models.CharField(max_length=20, blank=True, default="Низкий")
-    worker = models.CharField(max_length=20, blank=True)
-    done = models.BooleanField(default=False)
-    status = models.CharField(max_length=20, blank=True, default="Ожидание начала")
-    fileStrId = models.CharField(unique=True,max_length=255,blank=True)
-    file = models.FileField(upload_to='uploads/', blank=True)
-    def __str__(self):
-	    return self.user.username
+    # projName = models.CharField(max_length=240, blank=True, default="Новый проект")
+    # user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+    # taskPackage = models.CharField(max_length=240, blank=True, default="Новая задача")
+    # taskName = models.CharField(max_length=240, blank=True)
+    # goals = models.CharField(max_length=240,  blank=True)
+    # srok_start = models.DateField(auto_now=True)
+    # srok_end = models.DateField(blank=True)
+    # prioritet = models.CharField(max_length=20, blank=True, default="Низкий")
+    # worker = models.CharField(max_length=20, blank=True)
+    # done = models.BooleanField(default=False)
+    # status = models.CharField(max_length=20, blank=True, default="Ожидание начала")
+    # fileStrId = models.CharField(max_length=255,blank=True)
+    # file = models.FileField(upload_to='uploads/', blank=True)
+    # def __str__(self):
+	#     return self.user.username
 
+    body = models.CharField(max_length=300)
+    completed = models.BooleanField(default=False)
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)

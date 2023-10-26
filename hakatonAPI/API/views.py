@@ -12,29 +12,52 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .serializers import *
+from django.http import Http404
 
-class TodoAPIViewCreate(generics.ListCreateAPIView):
-	authentication_classes = [SessionAuthentication]
-	permission_classes = [IsAuthenticated]
-
-	queryset = TodoModel.objects.all()
-	serializer_class = TodoModelSerializer
+class TodoList(APIView):
 
 
-class TodoAPIDelete(generics.DestroyAPIView):
-	authentication_classes = [SessionAuthentication]
-	permission_classes = [IsAuthenticated]
+    def get(self, request):
+        todos = TodoModel.objects.all()
+        serializer = TodoSerializer(todos, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        serializer = TodoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status= status.HTTP_201_CREATED)
+        return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+    
 
-	queryset = TodoModel.objects.all()
-	serializer_class = TodoModelSerializer
+
+class TodoDetail(APIView):
 
 
-class TodoAPIUpdate(generics.UpdateAPIView):
-	authentication_classes = [SessionAuthentication]
-	permission_classes = [IsAuthenticated]
+    def get_object(self, pk):
+        try:
+            return TodoModel.objects.get(pk=pk)
+        except TodoModel.DoesNotExist:
+            raise Http404
 
-	queryset = TodoModel.objects.all()
-	serializer_class = TodoModelSerializer
+    def get(self, request, pk):
+        todo = self.get_object(pk)
+        serializer = TodoSerializer(todo)
+        return Response(serializer.data)
+    
+    def patch(self, request, pk):
+        todo = self.get_object(pk)
+        serializer = TodoSerializer(todo, data= request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+    def delete(self, request, pk):
+        todo = self.get_object(pk)
+        todo.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 

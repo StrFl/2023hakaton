@@ -5,7 +5,7 @@ from .models import TodoModel
 
 UserModel = get_user_model()
 
-class TodoModelSerializer(serializers.ModelSerializer):
+class TodoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TodoModel 

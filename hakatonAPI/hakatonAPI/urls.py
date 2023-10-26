@@ -30,8 +30,8 @@ urlpatterns = [
         extra_context={'schema_url':'api_schema'}
         ), name='swagger-ui'),
 
-    re_path(r'^api/create/$', TodoAPIViewCreate.as_view()),
-    re_path(r'^api/delete/(\d+)$', TodoAPIDelete.as_view()),
+    path('api/view/', TodoList.as_view()),
+    path('api/detail/<int:pk>/', TodoDetail.as_view()),
 
     path('api/register/', UserRegister.as_view(), name='register'),
 	path('api/login/', UserLogin.as_view(), name='login'),
