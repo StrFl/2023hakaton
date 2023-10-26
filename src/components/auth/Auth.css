@@ -1,28 +1,106 @@
-/* boostrap form style */
+#form_btn_reg {
+  margin-left: 2vw;
+  margin-top: 1.4vw;
+  width: 7vw;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0.3vw 0.1vw 1vw 0.10vw rgb(193, 193, 193);
+  height: 2vw;
+  border: none;
+  border-radius: 10vw;
+  font-family: RubikMedium;
+  font-size: 0.8vw;
+  margin-bottom: 2vw;
+}
 
-.form-inline {
-    width: 100%;
-  }
+#form_btn_sign {
+  margin-left: 2vw;
+  width: 7vw;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0.3vw 0.1vw 1vw 0.10vw rgb(193, 193, 193);
+  height: 2vw;
+  border: none;
+  border-radius: 10vw;
+  font-family: RubikMedium;
+  font-size: 0.8vw;
+}
+
+.reg-text {
+
+  color: black;
+
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.square {
+  background-color: white;
+  height: 20vw;
+  width: 20vw;
+  margin-left: 41vw;
+  margin-top: 10vw;
+  border-radius: 3vw;
+  box-shadow: 0.3vw 0.1vw 1vw 0.10vw rgb(193, 193, 193);
+}
+
+.input-pole {
+  margin-left: 5vw;
+  margin-bottom: 1.1vw;
+  border-radius: 4vw;
+  padding: 0.5vw;
+  border: none;
+  box-shadow: 0.3vw 0.1vw 1vw 0.10vw rgb(193, 193, 193);
+}
+
+.input-pole::placeholder  {
+   
+
+  padding-left: 2.8vw;
+  font-family: CoreSansC45;
+  font-size: 0.8vw;
+
+}
+
+#d::placeholder {
+  padding-left: 3.5vw;
+}
+
+.button-reg {
+  padding: 0.9vw;
+  margin-left: 2.9vw;
+  border-radius: 4vw;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0.3vw 0.1vw 1vw 0.10vw rgb(193, 193, 193);
+  margin-top: 1.9vw;
+}
+
+.button-sign {
+  padding: 0.9vw;
+  margin-left: 5vw;
+  width: 10vw;
+  border-radius: 4vw;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0.3vw 0.1vw 1vw 0.10vw rgb(193, 193, 193);
+  margin-top: 4.8vw;
+}
+
+.text-sign {
+  margin-left: 2.7vw;
+  font-family: CoreSansC45;
+  font-size: 1vw;
   
-  .form-group {
-    width: 90%;
-  }
+}
+.text-regis {
+  margin-left: 0.6vw;
+  font-family: CoreSansC45;
+  font-size: 1vw;
   
-  .input-group {
-    width: 90% !important;
-  }
-  
-  .form-control {
-    width: 80% !important;
-  }
-  
-  span.input-group-addon {
-    width: 50px !important;
-  }
-  
-  .center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 5%;
-  }
+}

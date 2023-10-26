@@ -36,10 +36,10 @@ export const Auth = ({ children }) => {
 
   function update_form_btn() {
     if (registrationToggle) {
-      document.getElementById("form_btn").innerHTML = "Зарегаться";
+      document.getElementById("form_btn_reg").innerHTML = "РЕГИСТРАЦИЯ";
       setRegistrationToggle(false);
     } else {
-      document.getElementById("form_btn").innerHTML = "Войти";
+      document.getElementById("form_btn_sign").innerHTML = "ВОЙТИ";
       setRegistrationToggle(true);
     }
   }
@@ -99,65 +99,80 @@ export const Auth = ({ children }) => {
 
 
 
+
   return (
     <div>
-      <button id="form_btn" onClick={update_form_btn} variant="light">
-        Register
-      </button>
-
-      {registrationToggle ? (
-        <div className="center">
+      <div className="square">
+      
+          <button id="form_btn_reg" onClick={update_form_btn} variant="light">
+          <p className="reg-text">РЕГИСТРАЦИЯ</p> 
+          </button>
+          <button id="form_btn_sign" onClick={update_form_btn} variant="light">
+          <p className="reg-text">ВОЙТИ</p> 
+          </button>
+    
+          {registrationToggle ? (
+        <div className="col">
           <form onSubmit={(e) => submitRegistration(e)}>
-            <input
+              <input
+                className="col input-pole"
               type="email"
-              placeholder="ПОЧТА"
+              placeholder="ЭЛ. ПОЧТА"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
-            <input
+              <input
+                id="d"
+                className="col input-pole"
               type="text"
-              placeholder="НИК"
+              placeholder="ИМЯ"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
 
-            <input
+              <input
+                className="col input-pole"
               type="password"
               placeholder="ПАРОЛЬ"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button variant="primary" type="submit">
-              Submit
+            <button variant="primary" type="submit" className="col button-reg">
+             <p className="text-regis">ЗАРЕГИСТРИРОВАТЬСЯ</p> 
             </button>
 
           </form>
         </div>
       ) : (
-        <div className="center">
+        <div className="col">
           <form onSubmit={(e) => submitLogin(e)}>
-            <input
+                <input
+                  className="col input-pole"
               type="email"
-              placeholder="Enter email"
+              placeholder="ЭЛ. ПОЧТА"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
-            <input
+                <input
+                  className="col input-pole"
               type="password"
-              placeholder="Password"
+              placeholder="ПАРОЛЬ"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button variant="primary" type="submit">
-              Submit
+            <button variant="primary" type="submit" className="col button-sign">
+             <p className="text-sign">ВОЙТИ</p> 
             </button>
           </form>
         </div>
       )}
+        
+      </div>
+      
     </div>
   );
 }
