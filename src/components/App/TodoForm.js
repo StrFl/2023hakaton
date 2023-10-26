@@ -48,19 +48,30 @@ const TodoForm = ({ setTodos, fetchData }) => {
 
 
     return (
-        <>
+        <div className="col">
             <input type="text" placeholder="Добавить задачу" value={newTodo.body}
-                className="input input-bordered input-info w-full max-w-xs"
+                className="inp"
                 onChange={handleChange}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                         postTodo();
                     }
                 }} />
-            
+            <input type="checkbox" id="side-checkbox" />
+                <div class="side-panel">
+                    <label class="side-button-2" for="side-checkbox">+</label>    
+                    <div class="side-title">Выдвижная панель:</div>
+                    <p>Информация в панеле</p>
+                            </div>
+                            <div class="side-button-1-wr">
+                    <label class="side-button-1" for="side-checkbox">
+                        <div class="side-b side-open">Открыть</div>
+                        <div class="side-b side-close">Закрыть</div>
+                    </label>
+</div>
 
             <input type="text" placeholder="Описание" value={newTodo.goals}
-                className="input input-bordered input-info w-full max-w-xs"
+                className=""
                 onChange={handleChangeGoal}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {
@@ -68,7 +79,7 @@ const TodoForm = ({ setTodos, fetchData }) => {
                     }
                 }} />
             <button onClick={postTodo} className="btn btn-primary ml-2">Добавить</button>
-        </>
+        </div>
     )
 }
 

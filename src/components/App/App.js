@@ -40,11 +40,6 @@ function App() {
         <p id="sec-line">Новая группа</p> 
       </div>
   
-              
-          
-      
-    
-
 
       <TodoForm setTodos={setTodos} fetchData={fetchData} />
       <Table todos={todos} isLoading={isLoading} setTodos={setTodos} />
