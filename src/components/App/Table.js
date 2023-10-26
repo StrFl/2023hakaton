@@ -15,6 +15,7 @@ const Table = ({ todos, isLoading, setTodos }) => {
   const [editText, setEditText] = useState({
     body: "",
   });
+  const [todo, setTodo] = useState(todos);
 
   const handleDelete = async (id) => {
     try {
@@ -67,17 +68,19 @@ const Table = ({ todos, isLoading, setTodos }) => {
 
   return (
     <div>
-      
+   
     
           {isLoading ? (
             <div>Загрузка </div>
           ) : (
             <>
               {" "}
-              {todos.map((todoItem, index) => (
-                <tr key={todoItem.id} className="line">
+            {todos.map((todoItem, index) => (
+              <div className="line">
+                <table className="line">
+                <tr key={todoItem.id} >
                 
-                    <p
+                    <td
                       onClick={() =>
                         handleCheckbox(todoItem.id, todoItem.completed)
                       }
@@ -88,17 +91,17 @@ const Table = ({ todos, isLoading, setTodos }) => {
                       ) : (
                         <MdOutlineCheckBoxOutlineBlank />
                       )}
-                    </p>
+                    </td>
                
-                  <p className="p-3 text-sm " title={todoItem.id}>
+                  <td className="p-3 text-sm " title={todoItem.id}>
                     {todoItem.prioritet}
-                  </p>
-                  <p className="p-3 text-sm " title={todoItem.id}>
+                  </td>
+                  <td className="p-3 text-sm " title={todoItem.id}>
                     {todoItem.body}
-                  </p>
-                  <p className="p-3 text-sm " title={todoItem.id}>
+                  </td>
+                  <td className="p-3 text-sm " title={todoItem.id}>
                     {todoItem.goals}
-                  </p>
+                  </td>
                   <td className="p-3 text-sm text-center">
                     <span
                       className={`p-1.5 text-xs font-medium tracking-wider rounded-md ${
@@ -127,6 +130,9 @@ const Table = ({ todos, isLoading, setTodos }) => {
                     </span>
                   </td>
                 </tr>
+                </table>
+              </div>
+
               ))}
             </>
           )}
