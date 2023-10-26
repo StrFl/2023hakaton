@@ -82,12 +82,15 @@ body {
   border-radius: 2vw;
   border: none;
   width: 10vw;
+  font-family: CoreSansC45;
   margin-left: 8vw;
   padding: 0.7vw;
   box-shadow: 5px 5px 5px 0 #222326;
 }
 
-
+.line {
+  margin: auto;
+}
 
 
 
