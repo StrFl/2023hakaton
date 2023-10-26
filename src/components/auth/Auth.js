@@ -3,7 +3,7 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import TodoForm from "../App/TodoForm";
+
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
@@ -13,7 +13,8 @@ const client = axios.create({
   baseURL: "http://127.0.0.1:8000",
 });
 
-function App() {
+
+export const Auth = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [registrationToggle, setRegistrationToggle] = useState(false);
   const [email, setEmail] = useState("");
@@ -60,7 +61,7 @@ function App() {
           .then(function (res) {
             setCurrentUser(true);
             navigate("/app");
-            return(<App email={email} password={password} />)
+       
           })
           .catch(function (error) {
             setCurrentUser(false);
@@ -82,7 +83,7 @@ function App() {
         setCurrentUser(true);
 
         navigate("/app");
-        return(<App email={email} password={password} />)
+
       })
       .catch(function (error) {
         setCurrentUser(false);
@@ -96,30 +97,8 @@ function App() {
     });
   }
 
-  function isAuthenticated() {
-    if (currentUser) {
-      return true;
-    }
 
-    return false;
-  }
 
-  if (currentUser) {
-    return (
-      <div>
-        <form onSubmit={(e) => submitLogout(e)}>
-          <button type="submit" variant="light">
-            Log out
-          </button>
-        </form>
-
-        <div className="center">
-          <h2>Вы авторизованы</h2>
-        
-        </div>
-      </div>
-    );
-  }
   return (
     <div>
       <button id="form_btn" onClick={update_form_btn} variant="light">
@@ -183,4 +162,4 @@ function App() {
   );
 }
 
-export default App;
+

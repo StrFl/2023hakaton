@@ -57,6 +57,7 @@ class TodoModel(models.Model):
     body = models.CharField(max_length=300)
     goals = models.CharField(max_length=240)
     prioritet = models.CharField(max_length=20, default="Низкий")
+    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
