@@ -17,7 +17,7 @@ const Table = ({ todos, isLoading, setTodos }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/delete/${id}/`)
+      await axios.delete(`http://127.0.0.1:8000/api/detail/${id}/`)
       const newList = todos.filter(todo => todo.id !== id)
       setTodos(newList)
     } catch (error) {
@@ -27,7 +27,7 @@ const Table = ({ todos, isLoading, setTodos }) => {
 
   const handleEdit = async (id, value) => {
     try {
-      const response = await axios.patch(`http://127.0.0.1:8000/api/edit/${id}/`, value)
+      const response = await axios.patch(`http://127.0.0.1:8000/api/detail/${id}/`, value)
       console.log(response.data);
       const newTodos = todos.map(todo => todo.id === id ? response.data : todo)
       setTodos(newTodos)
@@ -67,6 +67,7 @@ const Table = ({ todos, isLoading, setTodos }) => {
           <tr>
             <th className='p-3 text-sm font-semibold tracking-wide text-left'>Checkbox</th>
             <th className='p-3 text-sm font-semibold tracking-wide text-left'>To Do</th>
+            <th className='p-3 text-sm font-semibold tracking-wide text-left'>Описание</th>
             <th className='p-3 text-sm font-semibold tracking-wide text-left'>Status</th>
             <th className='p-3 text-sm font-semibold tracking-wide text-left'>Date Created</th>
             <th className='p-3 text-sm font-semibold tracking-wide text-left'>Actions</th>
@@ -83,7 +84,9 @@ const Table = ({ todos, isLoading, setTodos }) => {
                       <MdOutlineCheckBoxOutlineBlank />}
                   </span>
                 </td>
+                <td className='p-3 text-sm ' title={todoItem.id}>{todoItem.prioritet}</td>
                 <td className='p-3 text-sm ' title={todoItem.id}>{todoItem.body}</td>
+                <td className='p-3 text-sm ' title={todoItem.id}>{todoItem.goals}</td>
                 <td className='p-3 text-sm text-center'>
                   <span className={`p-1.5 text-xs font-medium tracking-wider rounded-md ${todoItem.completed ? 'bg-green-300' : 'bg-red-300'}`}>
                     {todoItem.completed ? 'Done' : 'Incomplete'}

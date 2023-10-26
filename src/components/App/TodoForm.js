@@ -6,63 +6,70 @@ axios.defaults.xsrfHeaderName = "X-CSRFToken";
 axios.defaults.withCredentials = true;
 
 const TodoForm = ({ setTodos, fetchData }) => {
-  const [newTodo, setNewTodo] = useState({
-    projName: "фывфывфыwg",
-    taskPackage: "фывwg",
-    taskName: "",
-    goals: "фывфыв",
-    srok_end: "28.10.2023",
-    prioritet: "вввwgwg",
-    worker: "Пользователь 1",
-    status: "Выв",
-    fileStrId: "",
-    file: null,
-    user: 1,
-  });
 
-  const handleChange = (e) => {
-    setNewTodo((prev) => ({
-      ...prev,
-      taskName: e.target.value,
-    }));
-  };
+    const [newTodo, setNewTodo] = useState({
+        'body': '',
+        'goals': ''
+    })
 
-  const postTodo = async () => {
-    try {
-      await axios.post(`http://127.0.0.1:8000/api/create/`, newTodo);
-      setNewTodo({ taskName: "" });
-      setTodos((prevTodos) => [...prevTodos, newTodo]);
-      fetchData();
-    } catch (error) {
-      console.log(error);
+    const handleChange = (e) => {
+        setNewTodo(prev => ({
+            ...prev,
+            'body': e.target.value
+
+        }))
     }
-  };
 
-  // const handleKeyDown = (e) => {
-  //     if (e.key === 'Enter') {
-  //         postTodo();
-  //     }
-  // }
+    const handleChangeGoal = (e) => {
+        setNewTodo(prev => ({
+            ...prev,
+            'goals': e.target.value
+        }))
+    }
 
-  return (
-    <>
-      <input
-        type="text"
-        placeholder="Add Todo"
-        value={newTodo.taskName}
-        className="input input-bordered input-info w-full max-w-xs"
-        onChange={handleChange}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            postTodo();
-          }
-        }}
-      />
-      <button onClick={postTodo} className="btn btn-primary ml-2">
-        Add todo
-      </button>
-    </>
-  );
-};
+
+    const postTodo = async () => {
+        try {
+            await axios.post(`http://127.0.0.1:8000/api/view/`, newTodo)
+            setNewTodo({ 'body': '', 'goals': '' })
+            setTodos(prevTodos => [...prevTodos, newTodo])
+            fetchData()
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // const handleKeyDown = (e) => {
+    //     if (e.key === 'Enter') {
+    //         postTodo();
+    //     }
+    // }
+
+
+
+    return (
+        <>
+            <input type="text" placeholder="Добавить задачу" value={newTodo.body}
+                className="input input-bordered input-info w-full max-w-xs"
+                onChange={handleChange}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        postTodo();
+                    }
+                }} />
+            
+
+            <input type="text" placeholder="Описание" value={newTodo.goals}
+                className="input input-bordered input-info w-full max-w-xs"
+                onChange={handleChangeGoal}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        postTodo();
+                    }
+                }} />
+            <button onClick={postTodo} className="btn btn-primary ml-2">Добавить</button>
+        </>
+    )
+}
 
 export default TodoForm;

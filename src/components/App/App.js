@@ -15,7 +15,7 @@ const client = axios.create({
 });
 
 function App({ email, password }) {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState("");
   const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
@@ -24,10 +24,7 @@ function App({ email, password }) {
 
   const fetchData = async () => {
     try {
-      const response = await client.get("/api/create/", {
-        email: email,
-        password: password,
-      });
+      const response = await client.get("/api/view/");
       setTodos(response.data);
       setisLoading(false);
     } catch (error) {
